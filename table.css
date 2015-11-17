@@ -1,0 +1,35 @@
+
+tr:nth-of-type(2n+2){
+  background: lightpink;
+}
+
+tr:nth-of-type(2n+3){
+  background: #e5eecc;
+}
+#pagenation1{
+   position: absolute;
+
+   left: 50px;
+   top: 280px;
+}
+#pagenation1 ul li{
+
+    display:inline;
+  }
+#pagenation1 ul li a
+{
+text-decoration: none;
+padding: .2em 1em;
+color: #fff;
+background-color: #036;
+}
+
+#pagenation1 ul li a:hover
+{
+color: #fff;
+background-color: #369;
+}
+.th{
+  cursor:pointer;
+  background-color: #eee;
+}
