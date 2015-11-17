@@ -1,0 +1,60 @@
+<html>
+<head>
+</head>
+<body id = "body">
+  <script>
+var employee = [
+  {
+    ename: "ravi",
+    num: "1",
+    salary: "5000"
+  },
+  {
+    ename: "siva",
+    num: "2",
+    salary: "6000"
+  },
+  {
+    ename: "aravind",
+    num: "3",
+    salary: "8000"
+  },
+  {
+    ename: "balu",
+    num: "4",
+    salary: "9000"
+  },
+  {
+    ename: "charan",
+    num: "5",
+    salary: "4000"
+  },
+  {
+    ename: "delhi",
+    num: "6",
+    salary: "1000"
+  }
+];
+
+var str;
+str += "<table border = '1' id='table' ><tr>"
+str += "<th id = 'th1' class='th'> Emp_name </th>"
+str += "<th id = 'th2' class='th'>Emp_Id</th>"
+str += "<th id = 'th3' class='th'>Emp_Sal</th></tr>";
+
+for( var i = 0; i < employee.length; i++){
+  var a=  Object.keys(employee[i]);
+  str += "<tr>";
+  for(var j = 0; j < a.length; j++)
+  {
+    str += "<td>"+ employee[i][a[j]]+ "</td>";
+  }
+  str += "</tr>";
+}
+
+str += "</table>";
+document.getElementById("body").innerHTML = str;
+</script>
+
+</body>
+  </html>
