@@ -96,13 +96,13 @@ var employeeSection2 = [
   }
 ];
 var str;
-str += "<table><tr><td>search:- <input type='text' id='text'></td>"
-str += "<td><button = 'button' id= 'button' onclick='filter()'>clikHere  </button></td></tr></table><br><br>";
+str += "<table class = 'table1' ><tr><td id='td1'><font>search:-</font> <input type = 'text' id = 'text'></td>"
+str += "<td><button = 'button' id= 'button' onclick = 'filter()'>clikHere  </button></td></tr></table><br><br>";
 
 str += "<table border = '1' id='table' ><tr>"
-str += "<th id = 'th1' class='th' onclick='sorting(0)' >Emp_name </th>"
-str += "<th id = 'th2' class='th' onclick='sorting(1)' >Emp_Id</th>"
-str += "<th id = 'th3' class='th' onclick='sorting(2)' >Emp_Sal</th></tr>";
+str += "<th id = 'th1' class = 'th' onclick = 'sorting(0)' >Emp_name </th>"
+str += "<th id = 'th2' class = 'th' onclick = 'sorting(1)' >Emp_Id</th>"
+str += "<th id = 'th3' class = 'th' onclick = 'sorting(2)' >Emp_Sal</th></tr>";
 
 for( var i = 0; i < employee.length; i++){
   var a=  Object.keys(employee[i]);
@@ -116,30 +116,41 @@ for( var i = 0; i < employee.length; i++){
 
 str += "</table>";
 str += "<br>";
-str += "<div id='pagenation1'><ul>";
-str += "<li><a href = '#' onclick='pagenation(employee)'>1</a></li>";
-str += "<li><a href = '#' onclick='pagenation(employeeSection1)'> 2 </a></li>";
-str += "<li><a href = '#' onclick='pagenation(employeeSection2)'> 3 </a></li>";
-str += "<li><a href = '#' onclick='pagenation()'> 4 </a></li>";
-str += "<li><a href = '#' onclick='pagenation()'> 5 </a></li>";
+str += "<div id ='pagenation1'><ul>";
+str += "<li><a href = '#' onclick = 'pagenation(employee)'>1</a></li>";
+str += "<li><a href = '#' onclick = 'pagenation(employeeSection1)'> 2 </a></li>";
+str += "<li><a href = '#' onclick = 'pagenation(employeeSection2)'> 3 </a></li>";
+str += "<li><a href = '#' onclick = 'pagenation()'> 4 </a></li>";
+str += "<li><a href = '#' onclick = 'pagenation()'> 5 </a></li>";
 str += "</ul><div>";
 document.getElementById("body").innerHTML = str;
 
 
 
 function sorting(col){
-  var tab = document.getElementById("table");
-  var len=tab.rows.length;
-  for(var i = 1; i < len-1; i++){
-   for(var j = i + 1; j < len; j++){
-      if(table.rows[i].cells[col].innerHTML > table.rows[j].cells[col].innerHTML){
-         var temp = table.rows[i].innerHTML;
-         table.rows[i].innerHTML = table.rows[j].innerHTML;
-         table.rows[j].innerHTML = temp;
+    var tab = document.getElementById("table");
+    var len=tab.rows.length;
+    for(var i = 1; i < len-1; i++){
+      for(var j = i + 1; j < len; j++){
+        if(table.rows[i].cells[col].innerHTML > table.rows[j].cells[col].innerHTML){
+          var temp = table.rows[i].innerHTML;
+          table.rows[i].innerHTML = table.rows[j].innerHTML;
+          table.rows[j].innerHTML = temp;
+        }
       }
     }
   }
-}
+  /*var tab = $("#table");
+  var len = $("tab tr").length;
+  for(var i = 1; i < len-1; i++){
+   for(var j = i + 1; j < len; j++){
+      if($("#table tr:eq(i) td:eq(col)").html() > $("#table tr:eq(j) td:eq(col)").html()){
+         var temp = $("#table tr:eq(i)").html()
+         $("#table tr:eq(i)").html( $("#table tr:eq(j)").html())
+         $("#table tr:eq(j)").html(temp)
+      }
+    }
+  }*/
 function filter() {
 
   var name = document.getElementById("text").value;
@@ -156,7 +167,7 @@ function filter() {
       for (j = 0; j < clen; j++) {
           arr[i][j] = cells[j].innerHTML;
 
-           if(arr[i][j]==name){
+           if(arr[i][j] === name){
                r = i;
           }
        }
@@ -166,17 +177,18 @@ function filter() {
          continue;
        }
        else{
-         tbody.rows[i].style.display = "none";
+        tbody.rows[i].style.display = "none";
+        //$("#table tr: eq(i)").hide();
     }
   }
 }
 
  function pagenation(e){
-  var tab=document.getElementById("table");
+  var tab = document.getElementById("table");
   var rows = tab.rows;
   var i,j;
   for(i = 0; i < e.length; i++){
-      var a=  Object.keys(e[i]);
+      var a =  Object.keys(e[i]);
       for(var j = 0; j < a.length; j++){
    tab.rows[i+1].cells[j].innerHTML = e[i][a[j]];
   }
